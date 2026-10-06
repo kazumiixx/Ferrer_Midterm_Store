@@ -1,0 +1,70 @@
+@model List<Ferrer_Midterm_Store.Models.Product>
+
+@{
+    ViewData["Title"] = "Products";
+}
+
+<h1>Products</h1>
+
+<a asp-action="Create" class="btn btn-primary mb-3">
+    Add Product
+</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Id</td>
+
+                <td>@product.Name</td>
+
+                <td>
+                    @(string.IsNullOrWhiteSpace(product.Description)
+                        ? "-"
+                        : product.Description)
+                </td>
+
+                <td>₱@product.Price</td>
+
+                <td>
+                    @(string.IsNullOrWhiteSpace(product.Category)
+                        ? "-"
+                        : product.Category)
+                </td>
+
+                <td>
+                    <a asp-action="Edit"
+                       asp-route-id="@product.Id"
+                       class="btn btn-warning btn-sm">
+                        Edit
+                    </a>
+
+                    <a asp-action="Delete"
+                       asp-route-id="@product.Id"
+                       class="btn btn-danger btn-sm">
+                        Delete
+                    </a>
+
+                    <a asp-controller="Cart"
+                       asp-action="AddToCart"
+                       asp-route-id="@product.Id"
+                       class="btn btn-success btn-sm">
+                        Add to Cart
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
