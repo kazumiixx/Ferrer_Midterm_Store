@@ -8,20 +8,27 @@
 
 @if (Model.Count == 0)
 {
-    <p>Your cart is empty.</p>
+    <div class="card">
+        <div class="card-body">
 
-    <a asp-controller="Products"
-       asp-action="Index"
-       class="btn btn-primary">
-        Continue Shopping
-    </a>
+            <h5>Your cart is empty.</h5>
+
+            <a asp-controller="Products"
+               asp-action="Index"
+               class="btn btn-primary">
+                Continue Shopping
+            </a>
+
+        </div>
+    </div>
 }
 else
 {
     <table class="table table-bordered">
+
         <thead>
             <tr>
-                <th>Product Name</th>
+                <th>Product</th>
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Subtotal</th>
@@ -30,17 +37,23 @@ else
         </thead>
 
         <tbody>
+
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>@item.ProductName</td>
+
+                    <td>
+                        @item.ProductName
+                    </td>
 
                     <td>
                         ₱@item.Price
                     </td>
 
                     <td>
+
                         <form asp-action="Update" method="post">
+
                             <input type="hidden"
                                    name="id"
                                    value="@item.Id" />
@@ -56,7 +69,9 @@ else
                                     class="btn btn-primary btn-sm">
                                 Update
                             </button>
+
                         </form>
+
                     </td>
 
                     <td>
@@ -64,27 +79,35 @@ else
                     </td>
 
                     <td>
+
                         <a asp-action="Remove"
                            asp-route-id="@item.Id"
                            class="btn btn-danger btn-sm">
                             Remove
                         </a>
+
                     </td>
+
                 </tr>
             }
+
         </tbody>
+
     </table>
 
-    <h4>
-        Total:
-        ₱@Model.Sum(item => item.Price * item.Quantity)
-    </h4>
+    <div class="card">
+        <div class="card-body">
 
-    <br />
+            <h4>
+                Total: ₱@Model.Sum(item => item.Price * item.Quantity)
+            </h4>
 
-    <a asp-controller="Products"
-       asp-action="Index"
-       class="btn btn-secondary">
-        Continue Shopping
-    </a>
+            <a asp-controller="Products"
+               asp-action="Index"
+               class="btn btn-secondary">
+                Continue Shopping
+            </a>
+
+        </div>
+    </div>
 }

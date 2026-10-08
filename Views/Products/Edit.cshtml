@@ -6,42 +6,60 @@
 
 <h1>Edit Product</h1>
 
-<form asp-action="Edit" method="post">
+<div class="card">
+    <div class="card-body">
 
-    <input type="hidden" asp-for="Id" />
+        <form asp-action="Edit" method="post">
 
-    <div class="mb-3">
-        <label asp-for="Name" class="form-label">Name</label>
-        <input asp-for="Name" class="form-control" />
-        <span asp-validation-for="Name" class="text-danger"></span>
+            <input type="hidden" asp-for="Id" />
+
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label">
+                    Product Name
+                </label>
+
+                <input asp-for="Name" class="form-control" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label">
+                    Description
+                </label>
+
+                <textarea asp-for="Description"
+                          class="form-control"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Price" class="form-label">
+                    Price
+                </label>
+
+                <input asp-for="Price"
+                       class="form-control"
+                       type="number"
+                       step="0.01" />
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Category" class="form-label">
+                    Category
+                </label>
+
+                <input asp-for="Category"
+                       class="form-control" />
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Save Changes
+            </button>
+
+            <a asp-action="Index"
+               class="btn btn-secondary">
+                Back
+            </a>
+
+        </form>
+
     </div>
-
-    <div class="mb-3">
-        <label asp-for="Description" class="form-label">Description</label>
-        <textarea asp-for="Description" class="form-control"></textarea>
-    </div>
-
-    <div class="mb-3">
-        <label asp-for="Price" class="form-label">Price</label>
-        <input asp-for="Price" class="form-control" />
-        <span asp-validation-for="Price" class="text-danger"></span>
-    </div>
-
-    <div class="mb-3">
-        <label asp-for="Category" class="form-label">Category</label>
-        <input asp-for="Category" class="form-control" />
-    </div>
-
-    <button type="submit" class="btn btn-primary">
-        Save Changes
-    </button>
-
-    <a asp-action="Index" class="btn btn-secondary">
-        Back
-    </a>
-
-</form>
-
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
+</div>

@@ -1,8 +1,44 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <h1>Welcome to Ferrer Midterm Store</h1>
+
+    <p>
+        Simple online store for our ASP.NET MVC project.
+    </p>
+
+    <a asp-controller="Products"
+       asp-action="Index"
+       class="btn btn-primary">
+        View Products
+    </a>
+
+</div>
+
+<div class="card mt-4">
+    <div class="card-body text-center">
+
+        <h4>What can you do?</h4>
+
+        <p>
+            View products, add products, edit products,
+            and add products to your shopping cart.
+        </p>
+
+        <a asp-controller="Products"
+           asp-action="Create"
+           class="btn btn-success">
+            Add a Product
+        </a>
+
+        <a asp-controller="Cart"
+           asp-action="Index"
+           class="btn btn-secondary">
+            View Cart
+        </a>
+
+    </div>
 </div>

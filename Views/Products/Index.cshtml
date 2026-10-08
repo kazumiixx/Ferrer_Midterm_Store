@@ -10,41 +10,34 @@
     Add Product
 </a>
 
-<table class="table table-bordered">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Category</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
+<div class="row">
 
-    <tbody>
-        @foreach (var product in Model)
-        {
-            <tr>
-                <td>@product.Id</td>
+    @foreach (var product in Model)
+    {
+        <div class="col-md-4">
 
-                <td>@product.Name</td>
+            <div class="card mb-4">
 
-                <td>
-                    @(string.IsNullOrWhiteSpace(product.Description)
-                        ? "-"
-                        : product.Description)
-                </td>
+                <div class="card-body">
 
-                <td>₱@product.Price</td>
+                    <h5 class="card-title">
+                        @product.Name
+                    </h5>
 
-                <td>
-                    @(string.IsNullOrWhiteSpace(product.Category)
-                        ? "-"
-                        : product.Category)
-                </td>
+                    <p class="card-text">
+                        @product.Description
+                    </p>
 
-                <td>
+                    <p>
+                        <strong>Price:</strong>
+                        ₱@product.Price
+                    </p>
+
+                    <p>
+                        <strong>Category:</strong>
+                        @product.Category
+                    </p>
+
                     <a asp-action="Edit"
                        asp-route-id="@product.Id"
                        class="btn btn-warning btn-sm">
@@ -63,8 +56,12 @@
                        class="btn btn-success btn-sm">
                         Add to Cart
                     </a>
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+
+                </div>
+
+            </div>
+
+        </div>
+    }
+
+</div>
